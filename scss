@@ -1,0 +1,16 @@
+:root {
+  --font-primary: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+  
+  --color-primary-dark: #0f172a;
+  --color-gold: #c5a880;
+  --color-gold-hover: #b0936b;
+  --color-surface: #ffffff;
+  --color-muted: #64748b;
+  
+  --glass-bg: rgba(15, 23, 42, 0.75);
+  --glass-border: rgba(197, 168, 128, 0.2);
+  
+  --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-luxury: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+}
