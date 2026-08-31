@@ -15,8 +15,14 @@
   <header class="site-header">
     <div class="nav-container">
       <h1 class="logo">Kuriftu Resort</h1>
-      <nav>
-        <button class="btn-primary js-book-trigger" aria-haspopup="dialog">Book Your Stay</button>
+      <nav style="display: flex; gap: 1rem; align-items: center;">
+        <!-- Multi-language Switcher (English, Amharic, Afaan Oromo) -->
+        <select id="lang-switcher" aria-label="Select Language" style="padding: 0.5rem; border-radius: 6px;">
+          <option value="en">English</option>
+          <option value="am">አማርኛ</option>
+          <option value="om">Afaan Oromoo</option>
+        </select>
+        <button class="btn-primary js-book-trigger" data-i18n="bookNow" aria-haspopup="dialog">Book Your Stay</button>
       </nav>
     </div>
   </header>
@@ -25,18 +31,32 @@
   <main>
     <section class="hero-section">
       <div class="hero-content stagger-item">
-        <h2>Immersive Luxury Reimagined</h2>
-        <p>Explore elite suites, holistic wellness retreats, and fine dining.</p>
+        <h2 data-i18n="heroTitle">Immersive Luxury Reimagined</h2>
+        <p data-i18n="heroSubtitle">Explore elite suites, holistic wellness retreats, and fine dining.</p>
       </div>
     </section>
 
     <section class="gallery-section">
-      <h3>Resort Showcase</h3>
+      <h3 data-i18n="showcaseTitle">Resort Showcase</h3>
       <div id="resort-gallery-grid" class="gallery-grid">
         <!-- Dynamically injected via gallery.js -->
       </div>
     </section>
   </main>
+
+  <!-- Footer Section with Location & Contact -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <h4>Kuriftu Resort & Spa</h4>
+        <p><strong>Location:</strong> Bishoftu (Debre Zeit), Ethiopia (Lake Kuriftu)</p>
+        <p><strong>Contact:</strong> <a href="tel:+251116673333">+251 11 667 3333</a></p>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 Kuriftu Resort & Spa. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
   <!-- Advanced Interactive Reservation Modal -->
   <div id="reservation-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
@@ -44,23 +64,23 @@
       <button class="modal-close js-modal-close" aria-label="Close reservation modal">&times;</button>
       
       <div class="modal-header">
-        <h3 id="modal-title" class="stagger-item">Reserve Your Stay</h3>
-        <p class="stagger-item">Select your dates and customize your luxury experience.</p>
+        <h3 id="modal-title" class="stagger-item" data-i18n="modalTitle">Reserve Your Stay</h3>
+        <p class="stagger-item" data-i18n="modalSubtitle">Select your dates and customize your luxury experience.</p>
       </div>
 
       <form class="modal-form stagger-item" id="booking-form">
         <div class="form-group">
-          <label for="check-in">Check-In Date</label>
+          <label for="check-in" data-i18n="checkIn">Check-In Date</label>
           <input type="date" id="check-in" name="checkIn" required>
         </div>
         
         <div class="form-group">
-          <label for="check-out">Check-Out Date</label>
+          <label for="check-out" data-i18n="checkOut">Check-Out Date</label>
           <input type="date" id="check-out" name="checkOut" required>
         </div>
 
         <div class="form-group">
-          <label for="suite-select">Select Suite Type</label>
+          <label for="suite-select" data-i18n="suiteType">Select Suite Type</label>
           <select id="suite-select" name="suiteType">
             <option value="presidential">Lake View Presidential Suite</option>
             <option value="spa-villa">Wellness Spa Villa</option>
@@ -68,10 +88,74 @@
           </select>
         </div>
 
-        <button type="submit" class="btn-submit">Confirm Reservation</button>
+        <button type="submit" class="btn-submit" data-i18n="confirmBtn">Confirm Reservation</button>
       </form>
     </div>
   </div>
+
+  <!-- Inline Language Switcher Script & Modals -->
+  <script type="module">
+    const translations = {
+      en: {
+        bookNow: "Book Your Stay",
+        heroTitle: "Immersive Luxury Reimagined",
+        heroSubtitle: "Explore elite suites, holistic wellness retreats, and fine dining.",
+        showcaseTitle: "Resort Showcase",
+        modalTitle: "Reserve Your Stay",
+        modalSubtitle: "Select your dates and customize your luxury experience.",
+        checkIn: "Check-In Date",
+        checkOut: "Check-Out Date",
+        suiteType: "Select Suite Type",
+        confirmBtn: "Confirm Reservation"
+      },
+      am: {
+        bookNow: "ይያዙ",
+        heroTitle: "የላቀ የቅንጦት ልምድ",
+        heroSubtitle: "ምርጥ ክፍሎችን፣ የጤና ማዕከላትን እና የውሃ ፓርኮችን ያስሱ።",
+        showcaseTitle: "የመዝናኛ ማዕከል እይታ",
+        modalTitle: "ቦታ ይያዙ",
+        modalSubtitle: "ቀናትን ይምረጡ እና የቅንጦት ቆይታዎን ያዘጋጁ።",
+        checkIn: "የመግቢያ ቀን",
+        checkOut: "የመውጫ ቀን",
+        suiteType: "የክፍል ዓይነት ይምረጡ",
+        confirmBtn: "ቦታ ማስያዙን ያረጋግጡ"
+      },
+      om: {
+        bookNow: "Qabachuuf",
+        heroTitle: "Kuriftu Resort & Spa",
+        heroSubtitle: "Qopheessaa fi tajaajila ajaa'ibaa argadhaa.",
+        showcaseTitle: "Daawwii Iddoo Bashannanaa",
+        modalTitle: "Bakka Qabadhu",
+        modalSubtitle: "Guyyaa filadhaa tajaajila keenya argadhaa.",
+        checkIn: "Guyyaa Galmaa",
+        checkOut: "Guyyaa Itti Baatu",
+        suiteType: "Gosa Iddoo Filadhu",
+        confirmBtn: "Mirkaneessi"
+      }
+    };
+
+    const selectEl = document.querySelector('#lang-switcher');
+    const currentLang = localStorage.getItem('kuriftu_lang') || 'en';
+    if (selectEl) selectEl.value = currentLang;
+
+    function updateDOM(lang) {
+      const t = translations[lang];
+      if (!t) return;
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) el.textContent = t[key];
+      });
+    }
+
+    updateDOM(currentLang);
+
+    selectEl?.addEventListener('change', (e) => {
+      const lang = e.target.value;
+      localStorage.setItem('kuriftu_lang', lang);
+      updateDOM(lang);
+    });
+  </script>
 
   <!-- Entry Point Modules for GitHub Deployment -->
   <script type="module" src="./components/modal/modal.js"></script>
