@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kuriftu Resort & Spa | Luxury Suites & Wellness</title>
+  
+  <!-- Fonts & Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="./scss/main.scss">
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header class="site-header">
+    <div class="nav-container">
+      <h1 class="logo">Kuriftu Resort</h1>
+      <nav>
+        <button class="btn-primary js-book-trigger" aria-haspopup="dialog">Book Your Stay</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Showcase -->
+  <main>
+    <section class="hero-section">
+      <div class="hero-content stagger-item">
+        <h2>Immersive Luxury Reimagined</h2>
+        <p>Explore elite suites, holistic wellness retreats, and fine dining.</p>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <h3>Resort Showcase</h3>
+      <div id="resort-gallery-grid" class="gallery-grid">
+        <!-- Dynamically injected via gallery.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Advanced Interactive Reservation Modal -->
+  <div id="reservation-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-container">
+      <button class="modal-close js-modal-close" aria-label="Close reservation modal">&times;</button>
+      
+      <div class="modal-header">
+        <h3 id="modal-title" class="stagger-item">Reserve Your Stay</h3>
+        <p class="stagger-item">Select your dates and customize your luxury experience.</p>
+      </div>
+
+      <form class="modal-form stagger-item" id="booking-form">
+        <div class="form-group">
+          <label for="check-in">Check-In Date</label>
+          <input type="date" id="check-in" name="checkIn" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="check-out">Check-Out Date</label>
+          <input type="date" id="check-out" name="checkOut" required>
+        </div>
+
+        <div class="form-group">
+          <label for="suite-select">Select Suite Type</label>
+          <select id="suite-select" name="suiteType">
+            <option value="presidential">Lake View Presidential Suite</option>
+            <option value="spa-villa">Wellness Spa Villa</option>
+            <option value="terrace-suite">Sunset Terrace Suite</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-submit">Confirm Reservation</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Entry Point Modules for GitHub Deployment -->
+  <script type="module" src="./components/modal/modal.js"></script>
+  <script type="module" src="./assets/images.js"></script>
+</body>
+</html>
