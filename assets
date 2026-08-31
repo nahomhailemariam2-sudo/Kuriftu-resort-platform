@@ -1,0 +1,31 @@
+/**
+ * @file images.js
+ * @description Centralized image index manifest for gallery sliders, virtual tours, and modals.
+ */
+
+export const RESORT_IMAGE_INDEX = [
+  {
+    id: "suite-deluxe-01",
+    category: "accommodation",
+    title: "Lake View Presidential Suite",
+    thumbnail: "./assets/images/suites/deluxe-thumb.webp",
+    fullsize: "./assets/images/suites/deluxe-full.webp",
+    alt: "Luxurious presidential suite overlooking Lake Tana with modern interior design."
+  },
+  {
+    id: "spa-wellness-02",
+    category: "spa",
+    title: "Hydrotherapy Relaxation Lounge",
+    thumbnail: "./assets/images/spa/wellness-thumb.webp",
+    fullsize: "./assets/images/spa/wellness-full.webp",
+    alt: "Serene spa treatment room with ambient lighting and natural stone architecture."
+  },
+  {
+    id: "dining-terrace-03",
+    category: "dining",
+    title: "Sunset Lakeside Dining Terrace",
+    thumbnail: "./assets/images/dining/terrace-thumb.webp",
+    fullsize: "./assets/images/dining/terrace-full.webp",
+    alt: "Outdoor dining tables set against a sunset backdrop over the water."
+  }
+];
