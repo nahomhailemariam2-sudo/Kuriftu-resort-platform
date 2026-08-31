@@ -1,0 +1,67 @@
+/**
+ * @file modal.js
+ * @description Advanced accessibility modal manager for luxury enterprise interfaces.
+ */
+
+export default class LuxuryModalController {
+  constructor(modalId, triggerClass, closeClass) {
+    this.modal = document.getElementById(modalId);
+    this.triggers = document.querySelectorAll(`.${triggerClass}`);
+    this.closeBtn = this.modal?.querySelector(`.${closeClass}`);
+    
+    if (!this.modal) return;
+
+    this.focusableElements = this.modal.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    this.firstFocusable = this.focusableElements[0];
+    this.lastFocusable = this.focusableElements[this.focusableElements.length - 1];
+
+    this.initListeners();
+  }
+
+  initListeners() {
+    this.triggers.forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.openModal();
+      });
+    });
+
+    this.closeBtn?.addEventListener('click', () => this.closeModal());
+
+    this.modal.addEventListener('click', (e) => {
+      if (e.target === this.modal) this.closeModal();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (!this.modal.classList.contains('is-active')) return;
+
+      if (e.key === 'Escape') this.closeModal();
+      if (e.key === 'Tab') this.handleTabKey(e);
+    });
+  }
+
+  handleTabKey(e) {
+    if (e.shiftKey && document.activeElement === this.firstFocusable) {
+      this.lastFocusable.focus();
+      e.preventDefault();
+    } else if (!e.shiftKey && document.activeElement === this.lastFocusable) {
+      this.firstFocusable.focus();
+      e.preventDefault();
+    }
+  }
+
+  openModal() {
+    this.modal.classList.add('is-active');
+    this.modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    this.firstFocusable?.focus();
+  }
+
+  closeModal() {
+    this.modal.classList.remove('is-active');
+    this.modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+}
